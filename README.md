@@ -2,13 +2,33 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
 
+## Features
+
+- Chat interface powered by OpenAI GPT-4o Mini model
+- Typed message handling with strong TypeScript support
+- Service-based architecture for clean API communication
+- Global styles and CSS variables for consistent theming
+
+## Prerequisites
+
+- Node.js and npm installed
+- Angular CLI installed globally (`npm install -g @angular/cli`)
+- An OpenAI API key (you can get free trial credits at [OpenAI](https://platform.openai.com/signup))
+
+## Environment Setup
+
+Create an environment file for your API key:
+
+````bash
+src/environments/environment.ts
+
 ## Development server
 
 To start a local development server, run:
 
 ```bash
 ng serve
-```
+````
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
