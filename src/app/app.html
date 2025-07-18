@@ -1,15 +1,11 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <div class="chat-container">
   <h1>Hey Chat!</h1>
 
+  /* the atfor block repeatedly renders the content of a block for each item in
+  a collection. essentially it's a loop. When the user input is sent to Open AI
+  the API is returning a response. The app keeps a list of messages which is
+  updated with each new message. The atfor block iterates over the messages
+  array and displays each message in the chat content area. */
   <div class="chat-content">
     @for (msg of messages; track $index) {
     <div
@@ -31,9 +27,7 @@
       placeholder="Type your message..."
       (keyup.enter)="sendMessage()"
     />
-    <button (click)="sendMessage()" [disabled]="isLoading || !userInput.trim()">
-      {{ isLoading ? "Loading..." : "Submit" }}
-    </button>
+    //added keyup event to send message on Enter key press
+    <button (click)="sendMessage()">Submit</button>
   </div>
-
 </div>

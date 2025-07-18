@@ -18,15 +18,16 @@ interface ChatMessage {
 export class App {
   userInput = '';
   isLoading = false;
+  // messages array to hold chat messages
   messages: ChatMessage[] = [];
 
   constructor(private openai: OpenAIService) {}
 
   sendMessage() {
-    if (!this.userInput.trim()) return;
+    if (!this.userInput.trim()) return; // Prevent sending empty messages
 
     this.messages.push({ role: 'User', text: this.userInput });
-
+    // Prepare messages for OpenAI API in the required format
     const apiMessages: OpenAIMessage[] = [
       { role: 'system' as const, content: 'You are a helpful assistant.' },
       ...this.messages.map<OpenAIMessage>((m) => ({
@@ -36,6 +37,8 @@ export class App {
     ];
 
     this.isLoading = true;
+
+    //call OpenAI with the conversation history
     this.openai.sendMessage(apiMessages).subscribe({
       next: (res: any) => {
         const reply = res?.choices?.[0]?.message?.content || '(No response)';
@@ -52,6 +55,6 @@ export class App {
       },
     });
 
-    this.userInput = '';
+    this.userInput = ''; // Clear input field after sending
   }
 }
