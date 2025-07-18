@@ -9,6 +9,31 @@
 
 <div class="chat-container">
   <h1>Hey Chat!</h1>
-</div>
 
-<router-outlet />
+  <div class="chat-content">
+    @for (msg of messages; track $index) {
+    <div
+      class="chat-message"
+      [class.user]="msg.role === 'User'"
+      [class.ai]="msg.role === 'AI'"
+    >
+      <strong>{{ msg.role }}:</strong> {{ msg.text }}
+    </div>
+    } @empty {
+    <p class="empty-message">No messages yet. Start chatting!</p>
+    }
+  </div>
+
+  <div class="chat-input">
+    <input
+      type="text"
+      [(ngModel)]="userInput"
+      placeholder="Type your message..."
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()" [disabled]="isLoading || !userInput.trim()">
+      {{ isLoading ? "Loading..." : "Submit" }}
+    </button>
+  </div>
+
+</div>

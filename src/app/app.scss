@@ -1,0 +1,59 @@
+@use "variables" as *;
+.chat-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: $color-white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $color-midnight-blue;
+    font-size: 1.8rem;
+  }
+
+  .chat-content {
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+    background: $color-nebula;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .chat-message {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    max-width: 80%;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+
+    &.user {
+      align-self: flex-end;
+      background-color: $color-hopbush;
+      color: $color-white;
+      text-align: right;
+    }
+
+    &.ai {
+      align-self: flex-start;
+      background-color: $color-patina;
+      color: $color-white;
+      text-align: left;
+    }
+  }
+
+  .empty-message {
+    text-align: center;
+    color: $color-regent-grey;
+    font-style: italic;
+  }
+}
